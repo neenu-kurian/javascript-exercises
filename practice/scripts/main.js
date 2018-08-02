@@ -21,3 +21,22 @@ myImage.onclick=function(){
 
 //changing the page's title to a personalized welcome message when the user first navigates to the site
 
+let myButton = document.querySelector('button');
+
+function setUserName() {
+    let myName = prompt('Please enter your name.');
+    localStorage.setItem('name', myName);
+    myHeading.textContent = 'Chrome is cool, ' + myName;
+  }
+
+if(!localStorage.getItem('name')){
+    setUserName()
+}
+
+else{
+    myHeading.textContent="chrome is cool ,"+ localStorage.getItem('name')
+}
+
+myButton.onclick = function() {
+    setUserName();
+  }
