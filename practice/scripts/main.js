@@ -40,3 +40,28 @@ else{
 myButton.onclick = function() {
     setUserName();
   }
+
+
+  //for learning prototype inheritance
+
+function Person(name,age){
+    this.name='neenu'
+    this.age=23
+  }
+  
+Person.prototype.details="neenu kurian"
+
+Person.prototype.getSomething=function(){
+    console.log(this.name)
+    return this.name;
+}
+
+console.log("person prototype",Person.prototype)//which will have oly details and getsomething, not name and age
+console.log("object prototype", Object.prototype)
+
+
+let person1=new Person('kurian',23);
+console.log("person1 prototype",person1.__proto__)//which give same result as Person.protoytpe
+
+
+
