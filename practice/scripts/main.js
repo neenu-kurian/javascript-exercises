@@ -63,5 +63,29 @@ console.log("object prototype", Object.prototype)
 let person1=new Person('kurian',23);
 console.log("person1 prototype",person1.__proto__)//which give same result as Person.protoytpe
 
+//to obtain json
+let header=document.querySelector('h1')
+let requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
 
+let request =new XMLHttpRequest();
+request.open('GET',requestURL);
+request.responseType='json'
+request.send();
+
+request.onload = function() {
+    var superHeroes = request.response;
+    populateHeader(superHeroes);
+    
+  }
+
+
+  function populateHeader(jsonObj) {
+    var myH1 = document.createElement('h1');
+    myH1.textContent = jsonObj['squadName'];
+    header.appendChild(myH1);
+  
+    var myPara = document.createElement('p');
+    myPara.textContent = 'Hometown: ' + jsonObj['homeTown'] + ' // Formed: ' + jsonObj['formed'];
+    header.appendChild(myPara);
+  }
 
